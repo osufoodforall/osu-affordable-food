@@ -1,4 +1,4 @@
-// EDIT PETITION URL: after publishing the campaign petition on Change.org, paste its public URL below.
+// EDIT PETITION URL: update this destination if the campaign's public Change.org petition URL changes.
 window.PETITION_CONFIG = {
   changeOrgUrl: "https://c.org/p49dVRwVHX"
 };
