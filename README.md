@@ -1,29 +1,31 @@
 # Hungry for Change · OSU
 
-A lightweight one-page campaign site for GitHub Pages. The page is plain HTML, CSS, and JavaScript; petition signatures are logged in Supabase (a small hosted database). No build step is required.
+A lightweight, one-page campaign website for GitHub Pages. It uses plain HTML, CSS, and JavaScript with no build step. Campaign signatures are collected on Change.org; this repository does not collect or store signer names, emails, or other signature details.
 
-## Publish with GitHub Pages
+## Change.org petition setup
 
-1. Create a GitHub repository and push these files to its `main` branch.
-2. In the repository, open **Settings → Pages**.
-3. Under **Build and deployment**, select **Deploy from a branch**, choose the repository's default branch (`master` in this checkout) and `/ (root)`, then save.
-4. GitHub will provide the site URL when the deployment finishes.
+This project cannot create or publish a Change.org petition through a public integration. A campaign organizer must sign in to Change.org, create the petition, review its terms, and publish it. The call to action currently points to Change.org's petition creation page until the campaign URL is configured.
 
-## Connect petition logging
+Suggested petition title: **Make Food Affordable and Accessible for Oregon State Students**
 
-1. Create a free Supabase project at [supabase.com](https://supabase.com/).
-2. In **SQL Editor**, run the contents of [`supabase.sql`](./supabase.sql). This creates a table protected by row-level security: visitors can insert signatures but cannot read or modify petition data.
-3. In Supabase **Project Settings → API**, copy the Project URL and the `anon` / publishable key. Never put a `service_role` key in this site.
-4. Paste those two values into [`config.js`](./config.js). Commit and push the edit. Since the browser must submit signatures, the anon key is public; the SQL permissions are the protection.
-5. Submit a test signature, then verify it appears in Supabase **Table Editor → signatures**. Delete the test row before launch if desired.
+Suggested petition text:
 
-The form stores name, email, self-described OSU connection, consent, and database timestamp. Email is used for duplicate prevention and is not shown on the webpage. Limit database access to organizers, explain retention to signers, and delete records when the campaign no longer needs them. Do not collect sensitive personal stories in this petition form.
+> Oregon State University students deserve affordable, nourishing food available when and where they need it. In an OSU classroom-based study conducted in 2023–24, 36.4% of 569 students in one comparison reported food insecurity. Among students living on campus, the reported rate was 35.5%. These findings describe the students surveyed and are not a random census of the whole university.
+>
+> We call on Oregon State University Housing & Dining Services and student housing representatives to work with students on measurable improvements: expand SNAP acceptance at campus food locations, publish clear low-cost meal options and prices, review dining hours with students, and report progress publicly. A required meal plan should provide meaningful access to food that fits students' needs.
 
-### Small edits
+After publishing, put the public petition URL in `config.js` as `changeOrgUrl`, then commit and push the edit. Change.org handles signatures on its site; signatures are not copied into this public GitHub repository. Its help center says petition owners can request a CSV export from the petition dashboard, available no earlier than 24 hours after petition creation: [Download your signatures](https://help.change.org/download-your-signatures?kb_language=en_US).
 
-- Update campaign wording and linked sources in `index.html` (comments mark the petition configuration and editable content sections).
-- Change the database project details only in `config.js`.
-- Change logged fields and database permissions in `supabase.sql`, keeping the table grants and RLS policies aligned with the form.
+## GitHub Pages
+
+The site is hosted from the repository's default branch (`master`) and root folder. To publish a change, commit it in GitHub Desktop and push to GitHub. GitHub Pages deploys the static files automatically.
+
+## Editing
+
+- Campaign text and source links are in `index.html`; comments mark the editable stats, asks, and Change.org setup.
+- Beaver orange (`#D73F09`) and black accents are set near the start of the stylesheet in `index.html`.
+- The public Change.org petition link is in `config.js`.
+- Do not commit signer information, exports, private contact lists, access tokens, or API keys to this repository. It is public.
 
 ## Verified data notes
 
