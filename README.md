@@ -6,7 +6,7 @@ A lightweight one-page campaign site for GitHub Pages. The page is plain HTML, C
 
 1. Create a GitHub repository and push these files to its `main` branch.
 2. In the repository, open **Settings → Pages**.
-3. Under **Build and deployment**, select **Deploy from a branch**, choose `main` and `/ (root)`, then save.
+3. Under **Build and deployment**, select **Deploy from a branch**, choose the repository's default branch (`master` in this checkout) and `/ (root)`, then save.
 4. GitHub will provide the site URL when the deployment finishes.
 
 ## Connect petition logging
